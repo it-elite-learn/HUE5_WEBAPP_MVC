@@ -1,0 +1,13 @@
+﻿@model ListViewModel
+
+
+<h2>Example for a clean select list / dropdown</h2>
+@*Helper C# Code *@
+@Html.DropDownListFor(m => m.Selected, Model.Qualifications.Select(q => new SelectListItem { Text = q.Name, Value = q.Id.ToString() }))
+
+@*per HTML*@
+<select asp-for="Selected"
+        asp-items="@(new SelectList(Model.Qualifications, nameof(Qualification.Id), nameof(Qualification.Name)))"
+        >
+        <option>Please select one</option>
+ </select>
